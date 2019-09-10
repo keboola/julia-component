@@ -5,7 +5,7 @@ services:
 before_script:
   - docker build -t julia-component .
 script: 
-  - docker run julia-component julia -e "using Pkg; Pkg.activate("/code"); Pkg.update(); Pkg.build(); Pkg.test()"
+  - docker run julia-component julia -e "using Pkg; Pkg.activate(\"/code\"); Pkg.update(); Pkg.build(); Pkg.test()"
 after_success:
   - docker images
 notifications:
