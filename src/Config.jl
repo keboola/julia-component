@@ -1,11 +1,7 @@
-module Config
-import JSONbuil
-include("TableManifest.jl")
-
-function intialize()
-    s = "{\"action\" : \"run\"}"
-    j = JSON.parse(s)
-    return j["action"]
-end
-
+struct Config
+    action::String
+    parameters::Dict
+    storage::Dict
+    image_parameters::Dict
+    authorization::Dict
 end
