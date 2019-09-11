@@ -1,0 +1,14 @@
+sudo: required
+language: bash
+services:
+  - docker
+before_script:
+  - docker build -t julia-component .
+script: 
+  - docker run julia-component julia -e "using Pkg; Pkg.activate(\"/code\"); Pkg.update(); Pkg.build(); Pkg.test()"
+after_success:
+  - docker images
+notifications:
+  email: false
+  slack:
+    secure: iMj9TsjSd7Fu0oZceTsaD+J58YcK3oCDYLGnzKbez6/LKOjdIF5RqcnWIAA8PMVsU/42kj5dzngpNINXPqynk2eS0wt4rFCTk8Hi1Gw2HfE5vCLCZdJU7mERHZ36mzyOEPnj/gkmfyKvQowPugvnmlJFFNrKGjXhEEJwxro1towsIM9ZUfFdns8UH8wj3FvsltSaUijehJxfKMuqht5ZC5aBzJ06DOpwlux4QoAzQ5yeM0zoQQoLGyOxSboMHBF6B4UUh7QZXbKhIvNe819/UbkD+6jltG9YoKSXPfAEaN2bYxe1wqYT9JAk5LtuC5+Muly+69uZ8GTGBXN2eghTR+IeNoEIh2IOxfrK9WDNrNVR/TazwFliow94RUqIjfNklDowNfVKfjiac28SY79Pf5R7vcrbAtgUhYEjsa2uUD9cx+1AkzNVMhmocPLSDo9ORENTNaufXGQk6/VAtfESgHpmP5oDd0eKHcrDQWKuFQDxM4aLyKKD7t2nYgukfTM6oYmV0TVl0M6CvuHUQvIpEOZCyH4/egJ4PlOQ4PCXNJR9iE5Uni27wXe3fhwkZScn+T1vTyE1lVDCm0PCNdi/6c0c6PW1ojIkQr8ikf16HOIDZkzgixB0haFYbkjr+PKoiqCF9tgYrR6mfX+SrONuFgmmmI6Ky7VPa75o+knnbDs=
