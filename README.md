@@ -29,3 +29,7 @@ docker run julia-component julia -e "using Pkg; Pkg.activate(\"/code\"); Pkg.upd
 ```
 
 The `Pkg.update()` command is necessary to match minor libraries version with those in the docker image.
+
+## License
+
+MIT licensed, see [LICENSE](./LICENSE) file.
